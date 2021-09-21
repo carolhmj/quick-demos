@@ -45,9 +45,13 @@
             scene.createDefaultSkybox(envTex, true);
 
             const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {});
+            const sphere2 = sphere.clone();
+            sphere.position.x = -0.55;
+            sphere2.position.x = 0.55;
+
             const mat = new BABYLON.PBRMaterial("sphereMat", scene);
             sphere.material = mat;
-            mat.metallic = 0.43;
+            mat.metallic = 0.33;
             mat.roughness = 0.12;
             mat.albedoTexture = new BABYLON.Texture("assets/textures/materials/frosted-glass/Glass_Frosted_001_basecolor.jpg");
             mat.metallicTexture = new BABYLON.Texture("assets/textures/materials/frosted-glass/Glass_Frosted_001_roughness.jpg");
@@ -56,8 +60,19 @@
             mat.reflectionTexture = envTex;
             mat.refractionTexture = envTex;
             mat.linkRefractionWithTransparency = true;
-            mat.indexOfRefraction = 1.5;
+            mat.indexOfRefraction = 1.2;
             mat.alpha = 0; // Fully refractive material
+
+            const mat2 = new BABYLON.PBRMaterial("sphereMat2", scene);
+            sphere2.material = mat2;
+            mat2.albedoColor = new BABYLON.Color3(0.823, 0.823, 0.823);
+            mat2.metallic = 0.05;
+            mat2.roughness = 0.15;
+            mat2.reflectionTexture = envTex;
+            mat2.refractionTexture = envTex;
+            mat2.linkRefractionWithTransparency = true;
+            mat2.indexOfRefraction = 1.5;
+            mat2.alpha = 0; // Fully refractive material
 
             return scene;
         }
