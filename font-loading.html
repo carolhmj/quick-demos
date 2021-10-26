@@ -47,6 +47,8 @@
             families: ['Dancing Script']
           }
         });
+        console.log('WebFont load finish!');
+
         const canvas = document.getElementById("renderCanvas"); // Get the canvas element
         const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
@@ -77,6 +79,7 @@
             //Add text to dynamic texture
             var font = "bold 44px 'Qahiri'";
             document.fonts.ready.then(() => {
+                console.log('Document fonts ready!');
                 textureGround.drawText("Grass", 85, 135, font, "green", null, true, true);
             });
 
