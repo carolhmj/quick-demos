@@ -8,7 +8,12 @@
         <style>
             @font-face {
                 font-family: "Encode Sans";
-                src: url("/assets/fonts/Encode_Sans/static/EncodeSans/EncodeSans-Regular.ttf") format("truetype");
+                src: url("./assets/fonts/Encode_Sans/static/EncodeSans/EncodeSans-Regular.ttf") format("truetype");
+            }
+
+            @font-face {
+                font-family: "Qahiri";
+                src: url("./assets/fonts/Qahiri/Qahiri-Regular.ttf") format("truetype");
             }
 
             html, body {
@@ -70,7 +75,7 @@
             ground.material = materialGround;
             
             //Add text to dynamic texture
-            var font = "bold 44px 'Encode Sans'";
+            var font = "bold 44px 'Qahiri'";
             document.fonts.ready.then(() => {
                 textureGround.drawText("Grass", 85, 135, font, "green", null, true, true);
             });
