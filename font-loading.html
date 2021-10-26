@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Babylon Template</title>
+
+        <style>
+            @font-face {
+                font-family: "Encode Sans";
+                src: url("/assets/fonts/Encode_Sans/static/EncodeSans/EncodeSans-Regular.ttf") format("truetype");
+            }
+
+            html, body {
+                font-family: "Encode Sans", sans-serif;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #renderCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+        <script src="https://cdn.babylonjs.com/babylon.js"></script>
+        <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    </head>
+
+   <body>
+
+    <canvas id="renderCanvas" touch-action="none"></canvas> <!-- touch-action="none" for best results from PEP -->
+    <script>
+        WebFont.load({
+          google: {
+            families: ['Dancing Script']
+          }
+        });
+        const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+        const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+
+        // Add your code here matching the playground format
+        function createScene() {
+            var scene = new BABYLON.Scene(engine);
+    
+            var camera = new BABYLON.ArcRotateCamera("Camera", -Math.PI/2, Math.PI / 3, 25, BABYLON.Vector3.Zero(), scene);
+            camera.attachControl(canvas, true);
+
+            var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+            light.intensity = 0.7;
+
+            var groundWidth = 20;
+            var groundHeight = 10;
+
+            var ground = BABYLON.MeshBuilder.CreateGround("ground1", {width: groundWidth, height: groundHeight, subdivisions: 25}, scene);
+
+            //Create dynamic texture
+            var textureResolution = 512;
+            var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:512, height:256}, scene);   
+            var textureContext = textureGround.getContext();
+            
+            var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+            materialGround.diffuseTexture = textureGround;
+            ground.material = materialGround;
+            
+            //Add text to dynamic texture
+            var font = "bold 44px 'Encode Sans'";
+            document.fonts.ready.then(() => {
+                textureGround.drawText("Grass", 85, 135, font, "green", null, true, true);
+            });
+
+            var font2 = "30px 'Dancing Script'";
+            textureGround.drawText("Grass", 350, 135, font2, "blue", null, true, true);
+            
+            return scene;
+        }
+
+        const scene = createScene(); //Call the createScene function
+
+        // Register a render loop to repeatedly render the scene
+        engine.runRenderLoop(function () {
+            scene.render();
+        });
+
+        // Watch for browser/canvas resize events
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+
+   </body>
+
+</html>
