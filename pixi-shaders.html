@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Pixi.JS shaders demo</title>
+    </head>
+    <body>
+        <script src="https://pixijs.download/release/pixi.js"></script>
+        <script>
+            let app = new PIXI.Application({width: 640, height: 360, backgroundAlpha: 0});
+            document.body.appendChild(app.view);
+
+            app.stop();
+            app.loader.add('shader', 'assets/shaders/frag/identity.frag')
+            .add('shader2', 'assets/shaders/frag/identity.vert')
+            .add('tex', 'assets/textures/sprites/black_w_alpha.png')
+            .add('tex2', 'assets/textures/sprites/rot_black_w_alpha.png')
+            .load(onLoaded);
+
+            let filter;
+
+            function onLoaded(loader, res) {
+                const tex = res.tex.texture;
+                const tex2 = res.tex2.texture;
+
+                const blurFilter = new PIXI.filters.BlurFilter();
+                
+                filter = new PIXI.Filter(res.shader2.data, res.shader.data, {
+                    tex,
+                    tex2
+                });
+
+                const vertexSrc = `
+
+                precision mediump float;
+
+                attribute vec2 aVertexPosition;
+                attribute vec2 aUvs;
+
+                uniform mat3 translationMatrix;
+                uniform mat3 projectionMatrix;
+
+                varying vec2 vUvs;
+
+                void main() {
+
+                    vUvs = aUvs;
+                    gl_Position = vec4((projectionMatrix * translationMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);
+
+                }`;
+
+                const fragSrc = `
+                varying vec2 vUvs;
+                uniform sampler2D tex;
+                uniform sampler2D tex2;
+
+                void main() {
+                    vec4 c1 = texture2D(tex, vUvs);
+                    vec4 c2 = texture2D(tex2, vUvs);
+                    float f = c1.a*c2.a;
+                    gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0)*f;
+                }
+                `
+
+                console.log('filter', filter, 'blurFilter', blurFilter);
+
+                const spr = new PIXI.Sprite(tex);
+                const spr2 = new PIXI.Sprite(tex2);
+
+                const rtt = PIXI.RenderTexture.create({width: 640, height: 360});
+                const cont = new PIXI.Container();
+
+                const size = 300;
+                const v = size/2;
+                const geometry = new PIXI.Geometry()
+                .addAttribute('aVertexPosition', // the attribute name
+                    [-v, -v, // x, y
+                        v, -v, // x, y
+                        v, v,
+                        -v, v], // x, y
+                    2) // the size of the attribute
+                .addAttribute('aUvs', // the attribute name
+                    [0, 0, // u, v
+                        1, 0, // u, v
+                        1, 1,
+                        0, 1], // u, v
+                    2) // the size of the attribute
+                .addIndex([0, 1, 2, 0, 2, 3]);
+
+                const shader = PIXI.Shader.from(vertexSrc, fragSrc, {tex, tex2});
+                const quad = new PIXI.Mesh(geometry, shader);
+                quad.position.set(v,v);
+                
+                app.stage.addChild(spr2);
+                app.stage.addChild(spr);
+                app.stage.addChild(quad);
+                
+
+                app.start();
+            }
+        </script>
+    </body>
+</html>
