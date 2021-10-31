@@ -9,24 +9,14 @@
             document.body.appendChild(app.view);
 
             app.stop();
-            app.loader.add('shader', 'assets/shaders/frag/identity.frag')
-            .add('shader2', 'assets/shaders/frag/identity.vert')
+            app.loader
             .add('tex', 'assets/textures/sprites/black_w_alpha.png')
             .add('tex2', 'assets/textures/sprites/rot_black_w_alpha.png')
             .load(onLoaded);
 
-            let filter;
-
             function onLoaded(loader, res) {
                 const tex = res.tex.texture;
                 const tex2 = res.tex2.texture;
-
-                const blurFilter = new PIXI.filters.BlurFilter();
-                
-                filter = new PIXI.Filter(res.shader2.data, res.shader.data, {
-                    tex,
-                    tex2
-                });
 
                 const vertexSrc = `
 
@@ -52,21 +42,21 @@
                 uniform sampler2D tex;
                 uniform sampler2D tex2;
 
+                // from: https://stackoverflow.com/questions/21293278/mathematical-arithmetic-representation-of-xor
+                float xor(float a, float b) {
+                    return a + b - a*b*(1.0 + a + b + a*b);
+                }
+
                 void main() {
                     vec4 c1 = texture2D(tex, vUvs);
                     vec4 c2 = texture2D(tex2, vUvs);
-                    float f = c1.a*c2.a;
+                    float f = xor(c1.a, c2.a);
                     gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0)*f;
                 }
                 `
 
-                console.log('filter', filter, 'blurFilter', blurFilter);
-
                 const spr = new PIXI.Sprite(tex);
                 const spr2 = new PIXI.Sprite(tex2);
-
-                const rtt = PIXI.RenderTexture.create({width: 640, height: 360});
-                const cont = new PIXI.Container();
 
                 const size = 300;
                 const v = size/2;
