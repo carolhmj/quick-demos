@@ -6,3 +6,4 @@ Assets from:
 * https://polyhaven.com/a/evening_meadow
 * https://fonts.google.com/specimen/Encode+Sans
 * https://fonts.google.com/specimen/Qahiri
+* https://opengameart.org/content/fantasy-icon-pack-by-ravenmore-0

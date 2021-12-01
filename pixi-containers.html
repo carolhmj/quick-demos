@@ -10,27 +10,30 @@
 
             app.stop();
             app.loader
-            .add('tex', 'assets/textures/sprites/black_w_alpha.png')
-            .add('tex2', 'assets/textures/sprites/rot_black_w_alpha.png')
+            .add('tex', 'assets/textures/sprites/64/axe.png')
             .load(onLoaded);
 
             function onLoaded(loader, res) {
                 const tex = res.tex.texture;
-                const tex2 = res.tex2.texture;
 
-                const spr = new PIXI.Sprite(tex);
-                const spr2 = new PIXI.Sprite(tex2);
+                let mkSpr = (tex) => {
+                    return new PIXI.Sprite(tex);
+                }
 
                 const cont = new PIXI.Container();
                 const cont2 = new PIXI.Container();
+                const cont3 = new PIXI.Container();
 
                 app.stage.addChild(cont);
                 app.stage.addChild(cont2);
+                app.stage.addChild(cont3);
 
-                cont2.x = app.screen.width/2;
+                cont2.x = app.screen.width/3;
+                cont3.x = 2*app.screen.width/3;
                 
-                cont.addChild(spr2);
-                cont2.addChild(spr);
+                cont.addChild(mkSpr(tex));
+                cont2.addChild(mkSpr(tex));
+                cont3.addChild(mkSpr(tex));
                 
                 app.start();
             }
