@@ -1,0 +1,456 @@
+{
+  "autoClear": true,
+  "clearColor": [
+    0.2,
+    0.2,
+    0.3,
+    1
+  ],
+  "ambientColor": [
+    0,
+    0,
+    0
+  ],
+  "gravity": [
+    0,
+    -9.807,
+    0
+  ],
+  "collisionsEnabled": true,
+  "useRightHandedSystem": false,
+  "morphTargetManagers": [],
+  "lights": [
+    {
+      "tags": null,
+      "groundColor": [
+        0,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "diffuse": [
+        1,
+        1,
+        1
+      ],
+      "specular": [
+        1,
+        1,
+        1
+      ],
+      "falloffType": 0,
+      "intensity": 0.7,
+      "range": 1.7976931348623157e+308,
+      "intensityMode": 0,
+      "radius": 0.00001,
+      "_renderPriority": 0,
+      "shadowEnabled": true,
+      "excludeWithLayerMask": 0,
+      "includeOnlyWithLayerMask": 0,
+      "lightmapMode": 0,
+      "name": "light",
+      "id": "light",
+      "state": "",
+      "uniqueId": 2,
+      "type": 3,
+      "animations": [],
+      "ranges": [],
+      "isEnabled": true
+    }
+  ],
+  "cameras": [
+    {
+      "tags": null,
+      "ellipsoid": [
+        0.5,
+        1,
+        0.5
+      ],
+      "ellipsoidOffset": [
+        0,
+        0,
+        0
+      ],
+      "checkCollisions": false,
+      "applyGravity": false,
+      "rotation": [
+        0.37809080204313894,
+        -0.036349000998983944,
+        0
+      ],
+      "speed": 2,
+      "position": [
+        0,
+        5,
+        -10
+      ],
+      "upVector": [
+        0,
+        1,
+        0
+      ],
+      "fov": 0.8,
+      "projectionPlaneTilt": 0,
+      "minZ": 1,
+      "maxZ": 10000,
+      "inertia": 0.9,
+      "mode": 0,
+      "layerMask": 268435455,
+      "fovMode": 0,
+      "cameraRigMode": 0,
+      "name": "camera1",
+      "id": "camera1",
+      "state": "",
+      "uniqueId": 1,
+      "type": "FreeCamera",
+      "inputsmgr": {
+        "FreeCameraKeyboardMoveInput": {
+          "tags": null,
+          "keysUp": [
+            38
+          ],
+          "keysUpward": [
+            33
+          ],
+          "keysDown": [
+            40
+          ],
+          "keysDownward": [
+            34
+          ],
+          "keysLeft": [
+            37
+          ],
+          "keysRight": [
+            39
+          ],
+          "rotationSpeed": 0.5,
+          "keysRotateLeft": [],
+          "keysRotateRight": []
+        },
+        "FreeCameraMouseInput": {
+          "tags": null,
+          "buttons": [
+            0,
+            1,
+            2
+          ],
+          "angularSensibility": 2000
+        }
+      },
+      "animations": [],
+      "ranges": [],
+      "isEnabled": true
+    }
+  ],
+  "activeCameraID": "camera1",
+  "animations": [],
+  "materials": [
+    {
+      "tags": null,
+      "ambient": [
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        1,
+        1,
+        1
+      ],
+      "specular": [
+        1,
+        1,
+        1
+      ],
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "specularPower": 64,
+      "useAlphaFromDiffuseTexture": false,
+      "useEmissiveAsIllumination": false,
+      "linkEmissiveWithDiffuse": false,
+      "useSpecularOverAlpha": false,
+      "useReflectionOverAlpha": false,
+      "disableLighting": false,
+      "useObjectSpaceNormalMap": false,
+      "useParallax": false,
+      "useParallaxOcclusion": false,
+      "parallaxScaleBias": 0.05,
+      "roughness": 0,
+      "indexOfRefraction": 0.98,
+      "invertRefractionY": true,
+      "alphaCutOff": 0.4,
+      "useLightmapAsShadowmap": false,
+      "useReflectionFresnelFromSpecular": false,
+      "useGlossinessFromSpecularMapAlpha": false,
+      "maxSimultaneousLights": 4,
+      "invertNormalMapX": false,
+      "invertNormalMapY": false,
+      "twoSidedLighting": false,
+      "id": "default material",
+      "name": "default material",
+      "checkReadyOnEveryCall": false,
+      "checkReadyOnlyOnce": false,
+      "state": "",
+      "alpha": 1,
+      "backFaceCulling": true,
+      "cullBackFaces": true,
+      "sideOrientation": 1,
+      "alphaMode": 2,
+      "_needDepthPrePass": false,
+      "disableDepthWrite": false,
+      "disableColorWrite": false,
+      "forceDepthWrite": false,
+      "depthFunction": 0,
+      "separateCullingPass": false,
+      "fogEnabled": true,
+      "pointSize": 1,
+      "zOffset": 0,
+      "zOffsetUnits": 0,
+      "pointsCloud": false,
+      "fillMode": 0,
+      "stencil": {
+        "tags": null,
+        "func": 519,
+        "funcRef": 1,
+        "funcMask": 255,
+        "opStencilFail": 7680,
+        "opDepthFail": 7680,
+        "opStencilDepthPass": 7681,
+        "mask": 255,
+        "enabled": false
+      },
+      "uniqueId": 7
+    }
+  ],
+  "multiMaterials": [],
+  "environmentIntensity": 1,
+  "skeletons": [],
+  "transformNodes": [],
+  "geometries": {
+    "boxes": [],
+    "spheres": [],
+    "cylinders": [],
+    "toruses": [],
+    "grounds": [],
+    "planes": [],
+    "torusKnots": [],
+    "vertexData": [
+      {
+        "id": "965c4c15-0b1f-4122-92d8-c3f57b589def",
+        "uniqueId": 4,
+        "updatable": false,
+        "positions": null,
+        "normals": null,
+        "uvs": null,
+        "indices": null,
+        "delayLoadingFile": "ball_and_floor.965c4c15-0b1f-4122-92d8-c3f57b589def.babylongeometrydata",
+        "boundingBoxMinimum": [
+          -1,
+          -1,
+          -1
+        ],
+        "boundingBoxMaximum": [
+          1,
+          1,
+          1
+        ],
+        "hasUVs": true
+      },
+      {
+        "id": "2e858244-8125-4888-872c-018f44e378ef",
+        "uniqueId": 6,
+        "updatable": false,
+        "positions": null,
+        "normals": null,
+        "uvs": null,
+        "indices": null,
+        "delayLoadingFile": "ball_and_floor.2e858244-8125-4888-872c-018f44e378ef.babylongeometrydata",
+        "boundingBoxMinimum": [
+          -3,
+          0,
+          -3
+        ],
+        "boundingBoxMaximum": [
+          3,
+          0,
+          3
+        ],
+        "hasUVs": true
+      }
+    ]
+  },
+  "meshes": [
+    {
+      "name": "sphere",
+      "id": "sphere",
+      "uniqueId": 3,
+      "type": "Mesh",
+      "position": [
+        0,
+        1,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scaling": [
+        1,
+        1,
+        1
+      ],
+      "localMatrix": {
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 1,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 1
+      },
+      "isEnabled": true,
+      "isVisible": true,
+      "infiniteDistance": false,
+      "pickable": true,
+      "receiveShadows": false,
+      "billboardMode": 0,
+      "visibility": 1,
+      "checkCollisions": false,
+      "isBlocker": false,
+      "overrideMaterialSideOrientation": null,
+      "isUnIndexed": false,
+      "geometryUniqueId": 4,
+      "geometryId": "965c4c15-0b1f-4122-92d8-c3f57b589def",
+      "subMeshes": [
+        {
+          "materialIndex": 0,
+          "verticesStart": 0,
+          "verticesCount": 2415,
+          "indexStart": 0,
+          "indexCount": 13872
+        }
+      ],
+      "materialUniqueId": 7,
+      "materialId": "default material",
+      "instances": [],
+      "animations": [],
+      "ranges": [],
+      "layerMask": 268435455,
+      "alphaIndex": 1.7976931348623157e+308,
+      "hasVertexAlpha": false,
+      "overlayAlpha": 0.5,
+      "overlayColor": [
+        1,
+        0,
+        0
+      ],
+      "applyFog": true
+    },
+    {
+      "name": "ground",
+      "id": "ground",
+      "uniqueId": 5,
+      "type": "GroundMesh",
+      "position": [
+        15,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scaling": [
+        1,
+        1,
+        1
+      ],
+      "localMatrix": {
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 1,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 1
+      },
+      "isEnabled": true,
+      "isVisible": true,
+      "infiniteDistance": false,
+      "pickable": true,
+      "receiveShadows": false,
+      "billboardMode": 0,
+      "visibility": 1,
+      "checkCollisions": false,
+      "isBlocker": false,
+      "overrideMaterialSideOrientation": null,
+      "isUnIndexed": false,
+      "geometryUniqueId": 6,
+      "geometryId": "2e858244-8125-4888-872c-018f44e378ef",
+      "subMeshes": [
+        {
+          "materialIndex": 0,
+          "verticesStart": 0,
+          "verticesCount": 4,
+          "indexStart": 0,
+          "indexCount": 6
+        }
+      ],
+      "materialUniqueId": 7,
+      "materialId": "default material",
+      "instances": [],
+      "animations": [],
+      "ranges": [],
+      "layerMask": 268435455,
+      "alphaIndex": 1.7976931348623157e+308,
+      "hasVertexAlpha": false,
+      "overlayAlpha": 0.5,
+      "overlayColor": [
+        1,
+        0,
+        0
+      ],
+      "applyFog": true,
+      "subdivisionsX": 1,
+      "subdivisionsY": 1,
+      "minX": -3,
+      "maxX": 3,
+      "minZ": -3,
+      "maxZ": 3,
+      "width": 6,
+      "height": 6
+    }
+  ],
+  "particleSystems": [],
+  "postProcesses": [],
+  "sounds": [],
+  "useDelayedTextureLoading": true
+}
