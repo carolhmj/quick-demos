@@ -7,3 +7,4 @@ Assets from:
 * https://fonts.google.com/specimen/Encode+Sans
 * https://fonts.google.com/specimen/Qahiri
 * https://opengameart.org/content/fantasy-icon-pack-by-ravenmore-0
+* https://www.blendswap.com/blend/17087
