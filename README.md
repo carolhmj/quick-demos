@@ -8,3 +8,4 @@ Assets from:
 * https://fonts.google.com/specimen/Qahiri
 * https://opengameart.org/content/fantasy-icon-pack-by-ravenmore-0
 * http://kitfox.com/projects/perlinNoiseMaker/
+* https://cpetry.github.io/TextureGenerator-Online/
