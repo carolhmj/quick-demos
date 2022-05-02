@@ -79,11 +79,17 @@
         //const scene = createScene(); //Call the createScene function
         let scene;
 
+        let time = 0;
+        let max = 1000;
         // Register a render loop to repeatedly render the scene
         engine.runRenderLoop(function () {
-            scene = createScene();
-            scene.render();
-            scene.dispose();
+            time += engine.getDeltaTime();
+            if (time > max) {
+                scene = createScene();
+                scene.render();
+                scene.dispose();
+                time = 0;
+            }
         });
 
         // Watch for browser/canvas resize events
