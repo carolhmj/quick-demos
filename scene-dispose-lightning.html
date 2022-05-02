@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Babylon Template</title>
+
+        <style>
+            html, body {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #renderCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+
+        <script src="https://cdn.babylonjs.com/babylon.js"></script>
+        <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    </head>
+
+   <body>
+
+    <canvas id="renderCanvas" touch-action="none"></canvas> <!-- touch-action="none" for best results from PEP -->
+
+    <script>
+        const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+        const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+
+        // Add your code here matching the playground format
+        function createScene() {
+            var scene = new BABYLON.Scene(engine);  
+
+            var cam = new BABYLON.ArcRotateCamera("cam", 0, 0, 1, new BABYLON.Vector3(0,0,0));
+            cam.minZ = 0.01;
+            cam.attachControl(true);
+            cam.layerMask = 0x10000000;
+
+            var dirLight = new BABYLON.DirectionalLight("dirLight", new BABYLON.Vector3(-1,-1,0));
+            var helper = scene.createDefaultEnvironment({
+                enableGroundMirror: true,
+                groundSize: 100,
+                skyboxSize: 1000,
+                createSkybox: true,
+                groundMirrorFallOffDistance: 1500,
+                groundYBias:0.2,
+                groundOpacity: 0.7,
+                groundMirrorAmount: 1.5,
+                groundMirrorFresnelWeight: 0.75,
+                groundMirrorSizeRatio: 400,
+                groundMirrorBlurKernel: 80,
+                groundShadowLevel: 0.8,
+                cameraContrast: 1.6, 
+                cameraExposure: 1,
+            });
+            BABYLON.SceneLoader.ImportMesh("", "https://models.babylonjs.com/", "PBR_Spheres.glb", scene, function (meshes) { // lighting happens          
+                let boundingBox = meshes[0].getHierarchyBoundingVectors(true);
+                let size = boundingBox.max.subtract(boundingBox.max).length();
+                let center = boundingBox.min.add(boundingBox.max).scale(0.5);
+                cam.radius = Math.max(size*1.1,1);
+                cam.target = center;
+                for (let child of meshes) {
+                    if (child.getClassName() === "Mesh") {
+                        child.layerMask = cam.layerMask;
+                    }
+                }
+            });
+
+            return scene;
+        }
+
+        //const scene = createScene(); //Call the createScene function
+        let scene;
+
+        // Register a render loop to repeatedly render the scene
+        engine.runRenderLoop(function () {
+            scene = createScene();
+            scene.render();
+            scene.dispose();
+        });
+
+        // Watch for browser/canvas resize events
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+
+   </body>
+
+</html>
