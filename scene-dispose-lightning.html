@@ -76,17 +76,26 @@
             return scene;
         }
 
+        function timeout(ms) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve();
+                }, ms);
+            })
+        }
+
         //const scene = createScene(); //Call the createScene function
         let scene;
 
         let time = 0;
         let max = 1000;
         // Register a render loop to repeatedly render the scene
-        engine.runRenderLoop(function () {
+        engine.runRenderLoop(async function () {
             time += engine.getDeltaTime();
             if (time > max) {
                 scene = createScene();
                 scene.render();
+                //await timeout(1);
                 scene.dispose();
                 time = 0;
             }
