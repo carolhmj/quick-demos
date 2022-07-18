@@ -10,3 +10,4 @@ Assets from:
 * http://kitfox.com/projects/perlinNoiseMaker/
 * https://cpetry.github.io/TextureGenerator-Online/
 * https://tangrams.github.io/heightmapper
+* https://www.humus.name/index.php?page=Textures&ID=113
