@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Babylon Template</title>
+
+        <style>
+            html, body {
+              width: 100%;
+              height: 100%;
+              margin: 10px 0px;
+              padding: 0;
+            }
+
+            #renderCanvas {
+              width: 100%;
+              height: 500px;
+              touch-action: none;
+              margin: 0 auto;
+            }
+
+            .content {
+              margin: 0 auto;
+              width: 50%;
+            }
+        </style>
+
+        <script src="https://cdn.babylonjs.com/babylon.js"></script>
+        <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    </head>
+
+   <body>
+
+    <div class="content">
+      <canvas id="renderCanvas" touch-action="none"></canvas> <!-- touch-action="none" for best results from PEP -->
+    </div>
+
+    <script>
+        const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+        const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+
+        // Add your code here matching the playground format
+        function createScene() {
+            const scene = new BABYLON.Scene(engine);
+            //scene.debugLayer.show();
+
+            scene.createDefaultCameraOrLight(true, true, true);
+            scene.activeCamera.radius = 3;
+            scene.activeCamera.upperRadiusLimit = 10;
+            scene.activeCamera.lowerRadiusLimit = 2;
+            scene.activeCamera.wheelDeltaPercentage = 0.1;
+            const envTex = new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/textures/environments/meadows.env", scene);
+            scene.createDefaultSkybox(envTex, true);
+
+            const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {});
+            const sphere2 = sphere.clone();
+            sphere.position.x = -0.55;
+            sphere2.position.x = 0.55;
+
+            const mat = new BABYLON.PBRMaterial("sphereMat", scene);
+            sphere.material = mat;
+            mat.metallic = 0.33;
+            mat.roughness = 0.12;
+            mat.albedoTexture = new BABYLON.Texture("assets/textures/materials/frosted-glass/Glass_Frosted_001_basecolor.jpg");
+            mat.metallicTexture = new BABYLON.Texture("assets/textures/materials/frosted-glass/Glass_Frosted_001_roughness.jpg");
+            mat.bumpTexture = new BABYLON.Texture("assets/textures/materials/frosted-glass/Glass_Frosted_001_normal.jpg");
+            mat.ambientTexture = new BABYLON.Texture("assets/textures/materials/frosted-glass/Glass_Frosted_001_ambientOcclusion.jpg");
+            mat.reflectionTexture = envTex;
+            mat.refractionTexture = envTex;
+            mat.linkRefractionWithTransparency = true;
+            mat.indexOfRefraction = 1.2;
+            mat.alpha = 0; // Fully refractive material
+
+            const mat2 = new BABYLON.PBRMaterial("sphereMat2", scene);
+            sphere2.material = mat2;
+            mat2.albedoColor = new BABYLON.Color3(0.823, 0.823, 0.823);
+            mat2.metallic = 0.05;
+            mat2.roughness = 0.15;
+            mat2.reflectionTexture = envTex;
+            mat2.refractionTexture = envTex;
+            mat2.linkRefractionWithTransparency = true;
+            mat2.indexOfRefraction = 1.5;
+            mat2.alpha = 0; // Fully refractive material
+
+            return scene;
+        }
+
+        const scene = createScene(); //Call the createScene function
+
+        // Register a render loop to repeatedly render the scene
+        engine.runRenderLoop(function () {
+            scene.render();
+        });
+
+        // Watch for browser/canvas resize events
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+
+    <div class="content">
+      <h1>This is a title</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel lorem et tortor hendrerit gravida eu quis lectus. Sed vehicula consequat purus ac mattis. Quisque at nibh metus. Phasellus posuere ipsum ac enim ultricies, sed lobortis justo egestas. Proin et euismod nisi, lacinia eleifend diam. Sed lacinia tristique justo ullamcorper posuere. Nulla lacinia enim sapien, id vestibulum odio imperdiet lacinia. Aenean gravida congue lorem in fringilla. Cras lacinia dapibus magna at ullamcorper. In egestas consequat posuere. Cras nec urna molestie, ullamcorper turpis nec, congue nisi. In condimentum at tortor id semper. Donec id mi nec nisl vehicula porta eget quis nulla. Duis at nibh porttitor ante fringilla ultrices ac in dolor. Donec mollis molestie vehicula. Quisque sagittis, ipsum ut ullamcorper posuere, velit urna venenatis elit, a lacinia magna justo eget orci.</p>
+
+      <p>Aliquam sollicitudin porttitor magna nec blandit. Nullam lobortis dignissim leo, at facilisis ipsum iaculis luctus. Curabitur iaculis, dui vitae posuere dictum, ipsum nisl eleifend lectus, nec fringilla eros diam ut libero. Proin pretium tempor justo vel facilisis. Vivamus ut hendrerit nisi, ac bibendum eros. Sed sed tellus ut nisl porttitor mattis ac ut quam. Sed semper volutpat leo in sollicitudin. Fusce laoreet pellentesque commodo. Proin lobortis, erat non faucibus feugiat, nisi libero mollis ligula, a tempus purus nunc at nisi. Integer bibendum sagittis est, sed scelerisque justo posuere vel.</p>
+      
+      <p>In hac habitasse platea dictumst. Aenean malesuada a eros ut volutpat. In ornare lobortis quam, eget bibendum nunc blandit et. Nunc malesuada quam risus. Fusce elementum erat in fringilla fringilla. Donec interdum quis tortor dapibus feugiat. Aliquam dignissim vel erat tempor mattis. Maecenas sit amet libero in tortor facilisis tempus. Vestibulum a pellentesque ante. Ut et orci eu tortor faucibus imperdiet. Nam consectetur enim facilisis eros pulvinar, blandit luctus est tincidunt. Donec eget ante eu quam lobortis mattis non at neque.</p>
+      
+      <p>Nullam quis erat est. Morbi porttitor rhoncus massa, et placerat ex dictum non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam ut luctus turpis. Vivamus luctus condimentum elit in egestas. Curabitur blandit orci nec arcu elementum, sit amet maximus neque pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum fringilla, elit ac condimentum finibus, tellus lorem mollis nibh, nec ullamcorper velit lorem ac erat. Mauris tristique nunc finibus purus pulvinar aliquet. Fusce ullamcorper sodales elit, sed scelerisque purus condimentum non. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed non maximus nibh. Integer ac nibh et nibh vestibulum lacinia id eget lorem. Nam sed diam nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis blandit, ligula sed lacinia malesuada, lorem tellus placerat eros, vel efficitur dolor dui quis lectus.,</p>
+      
+      <p>In non lacinia nibh. Sed ullamcorper leo magna, non lobortis velit pharetra tempus. Donec quis nulla placerat, tincidunt dolor sit amet, sollicitudin metus. Etiam justo purus, tempus et rutrum quis, molestie ac felis. Vestibulum nec pharetra felis, vitae laoreet quam. Quisque nisi purus, placerat vel mollis sed, lacinia sed dui. Donec ut dolor vitae ligula pretium iaculis nec non justo. Curabitur tincidunt consequat neque. Ut eleifend vel nunc sit amet feugiat. Nulla quis molestie lectus, nec scelerisque ex. Nam leo sapien, condimentum et turpis at, imperdiet dignissim lacus. Curabitur metus felis, facilisis at dui id, egestas semper libero. Aliquam posuere nisi a egestas tempor. Suspendisse metus quam, interdum ut neque eget, pellentesque sodales leo. Morbi vel lorem non magna molestie bibendum. Morbi pretium metus sit amet metus cursus bibendum.</p>
+    </div> 
+  </body>
+
+</html>
