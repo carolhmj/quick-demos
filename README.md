@@ -14,3 +14,4 @@ Assets from:
 - https://tangrams.github.io/heightmapper
 - https://www.humus.name/index.php?page=Textures&ID=113
 - https://www.kenney.nl/assets/particle-pack
+- "Mr. Bee" (https://skfb.ly/6EqPC) by Ghan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
