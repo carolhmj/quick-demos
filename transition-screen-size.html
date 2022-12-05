@@ -42,68 +42,103 @@
 
       // Add your code here matching the playground format
       function createScene() {
-        const scene = new BABYLON.Scene(engine);
-        //scene.debugLayer.show();
+        // This creates a basic Babylon Scene object (non-mesh)
+        var scene = new BABYLON.Scene(engine);
+        scene.clearColor = BABYLON.Color3.FromHexString("#506D85");
+        window.scene = scene;
 
-        scene.createDefaultCameraOrLight(true, true, true);
-        scene.activeCamera.radius = 3;
-        const envTex = new BABYLON.CubeTexture.CreateFromPrefilteredData(
-          "assets/textures/environments/meadows.env",
+        // This creates and positions a free camera (non-mesh)
+        var camera = new BABYLON.ArcRotateCamera(
+          "camera1",
+          (127 / 180) * Math.PI,
+          (65.7 / 180) * Math.PI,
+          9,
+          new BABYLON.Vector3(0, 0, 0),
           scene
         );
-        scene.createDefaultSkybox(envTex, true);
+        camera.wheelPrecision = 512;
+        camera.pinchPrecision = 1024;
 
-        const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {});
-        const sphere2 = sphere.clone();
-        sphere.position.x = -0.55;
-        sphere2.position.x = 0.55;
+        // This targets the camera to scene origin
+        camera.setTarget(BABYLON.Vector3.Zero());
 
-        const mat = new BABYLON.PBRMaterial("sphereMat", scene);
-        sphere.material = mat;
-        mat.metallic = 0.33;
-        mat.roughness = 0.12;
-        mat.albedoTexture = new BABYLON.Texture(
-          "assets/textures/materials/frosted-glass/Glass_Frosted_001_basecolor.jpg"
-        );
-        mat.metallicTexture = new BABYLON.Texture(
-          "assets/textures/materials/frosted-glass/Glass_Frosted_001_roughness.jpg"
-        );
-        mat.bumpTexture = new BABYLON.Texture(
-          "assets/textures/materials/frosted-glass/Glass_Frosted_001_normal.jpg"
-        );
-        mat.ambientTexture = new BABYLON.Texture(
-          "assets/textures/materials/frosted-glass/Glass_Frosted_001_ambientOcclusion.jpg"
-        );
-        mat.reflectionTexture = envTex;
-        mat.refractionTexture = envTex;
-        mat.linkRefractionWithTransparency = true;
-        mat.indexOfRefraction = 1.2;
-        mat.alpha = 0; // Fully refractive material
+        // This attaches the camera to the canvas
+        camera.attachControl(canvas, true);
 
-        const mat2 = new BABYLON.PBRMaterial("sphereMat2", scene);
-        sphere2.material = mat2;
-        mat2.albedoColor = new BABYLON.Color3(0.823, 0.823, 0.823);
-        mat2.metallic = 0.05;
-        mat2.roughness = 0.15;
-        mat2.reflectionTexture = envTex;
-        mat2.refractionTexture = envTex;
-        mat2.linkRefractionWithTransparency = true;
-        mat2.indexOfRefraction = 1.5;
-        mat2.alpha = 0; // Fully refractive material
+        var light = new BABYLON.DirectionalLight(
+          "Sun",
+          new BABYLON.Vector3(-2, -1, 2.5),
+          scene
+        );
+        light.intensity = 2;
 
+        let hl = new BABYLON.HemisphericLight(
+          "Hl",
+          new BABYLON.Vector3(0, 1, 0),
+          scene
+        );
+        hl.intensity = 0.7;
+
+        // Our built-in 'ground' shape.
+        var ground = BABYLON.MeshBuilder.CreateGround(
+          "ground",
+          { width: 2, height: 2, subdivisions: 128 },
+          scene
+        );
+        ground.scaling = new BABYLON.Vector3(3, 3, 3);
+        ground.rotation.y = Math.PI * 2;
+
+        BABYLON.NodeMaterial.ParseFromSnippetAsync("#3FU5FG#1", scene).then(
+          (mat) => {
+            ground.material = mat;
+            window.mat = mat;
+          }
+        );
+
+        let addPostEffects = () => {
+          var pipeline = new BABYLON.DefaultRenderingPipeline(
+            "defaultPipeline", // The name of the pipeline
+            false, // Do you want the pipeline to use HDR texture?
+            scene, // The scene instance
+            [camera] // The list of cameras to be attached to
+          );
+
+          pipeline.bloomEnabled = true;
+          pipeline.bloomThreshold = 0;
+          pipeline.bloomKernel = 0.35;
+          pipeline.bloomScale = 0.5;
+
+          pipeline.grainEnabled = true;
+          pipeline.grain.intensity = 8;
+          pipeline.grain.animated = true;
+
+          pipeline.chromaticAberrationEnabled = true;
+          pipeline.chromaticAberration.aberrationAmount = 65.1;
+          pipeline.chromaticAberration.radialIntensity = 2;
+
+          pipeline.sharpenEnabled = true;
+          pipeline.sharpen.edgeAmount = 0.15;
+        };
+
+        addPostEffects();
+
+        addUIAndButton();
+
+        return scene;
+      }
+
+      function addUIAndButton() {
         var ui = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("ui");
         var btn = BABYLON.GUI.Button.CreateSimpleButton("start", "Start");
-        btn.top = "-25%";
+        btn.top = "-35%";
         btn.width = "100px";
         btn.height = "25px";
         btn.background = "white";
         ui.addControl(btn);
 
         btn.onPointerClickObservable.add(() => {
-            canvas.classList.add("canvasAnimated");
+          canvas.classList.add("canvasAnimated");
         });
-
-        return scene;
       }
 
       const scene = createScene(); //Call the createScene function
@@ -116,9 +151,9 @@
 
       // Watch for browser/canvas resize events
       window.addEventListener("resize", function () {
-        console.log('resized window');
+        //console.log("resized window");
         engine.resize();
-    });
+      });
     </script>
   </body>
 </html>
