@@ -17,3 +17,4 @@ Assets from:
 - "Mr. Bee" (https://skfb.ly/6EqPC) by Ghan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - Moving train video CC0 by Pixabay (https://www.pexels.com/video/moving-train-856360/).
 - Heart icon from Flaticon: https://www.flaticon.com/free-icon/heart_2077502?term=heart&page=1&position=4&page=1&position=4&related_id=2077502&origin=search
+- Snow textures: https://3dtextures.me/2018/02/27/snow-002/
