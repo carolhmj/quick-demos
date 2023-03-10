@@ -20,3 +20,5 @@ Assets from:
 - Snow textures: https://3dtextures.me/2018/02/27/snow-002/
 - Snowy hillside environment: https://polyhaven.com/a/snowy_hillside
 - Pool tiles texture: https://www.sharetextures.com/textures/floor/pool-tiles 
+- Rain sound effect: 
+    Sound Effect by <a href="https://pixabay.com/users/fronbondi_skegs-23154649/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=10576">Fronbondi_Skegs</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=10576">Pixabay</a>
