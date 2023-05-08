@@ -57,20 +57,26 @@
             return scene;
         }
 
-        const scene1 = createScene("box"); //Call the createScene function
-        const scene2 = createScene("sphere"); //Call the createScene function
+        // const scene1 = createScene("box"); //Call the createScene function
+        // const scene2 = createScene("sphere"); //Call the createScene function
 
-        let activeScene = scene1;
+        let activeSceneName = "box";
+        let activeScene = createScene(activeSceneName);
+        activeScene.debugLayer.show();
 
         window.addEventListener("keydown", (ev) => {
             if (activeScene) {
                 activeScene.debugLayer.hide();
+                activeScene.dispose();
             }
             if (ev.key === "1") {
-                activeScene = scene1;
+                activeSceneName = "box";
+                // activeScene = scene1;
             } else if (ev.key === "2") {
-                activeScene = scene2;
+                activeSceneName = "sphere";
+                // activeScene = scene2;
             }
+            activeScene = createScene(activeSceneName);
             if (activeScene) {
                 activeScene.debugLayer.show();
             }
