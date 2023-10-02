@@ -40,10 +40,14 @@
             </camera>
         </babylon>
         <script>
+            // We have to wait for the viewer to load before we can use it. For that, we use a Javascript Promise.
             BabylonViewer.viewerManager.getViewerPromiseById('babylon-viewer').then((viewer) => {
+                // Once the viewer is loaded, we wait for the scene to be loaded. For that we use Babylon.js Observables.
                 viewer.onSceneInitObservable.add((scene) => {
                     console.log('init scene', scene);
+                    // We get the current camera of the scene and disable the default controls.
                     scene.activeCamera.detachControl();
+                    // We add a button to the DOM to rotate the camera.
                     const btn = document.getElementById('rotateCam');
                     btn.addEventListener('click', () => {
                         console.log('click');
