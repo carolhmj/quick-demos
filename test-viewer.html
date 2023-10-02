@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Test</title>
+        <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #babylon-viewer {
+                width: 100%;
+                height: 100%;
+            }
+            button {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 100;
+                margin: 10px 10px;
+            }
+            p {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                margin: 10px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="rotateCam">Rotate Camera</button>
+        <babylon extends="minimal" id="babylon-viewer" model="./assets/mr._bee.glb">
+            <camera>
+                <position x="0" y="10" z="-10"/>
+                <behaviors>
+                    <auto-rotate type="0"></auto-rotate>
+                </behaviors>
+            </camera>
+        </babylon>
+        <script>
+            BabylonViewer.viewerManager.getViewerPromiseById('babylon-viewer').then((viewer) => {
+                viewer.onSceneInitObservable.add((scene) => {
+                    console.log('init scene', scene);
+                    scene.activeCamera.detachControl();
+                    const btn = document.getElementById('rotateCam');
+                    btn.addEventListener('click', () => {
+                        console.log('click');
+                        scene.activeCamera.alpha += 0.1;
+                    });
+                });
+            });
+        </script>
+        <p>"Mr. Bee" (https://skfb.ly/6EqPC) by Ghan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).</p>
+    </body>
+</html>
