@@ -175,7 +175,7 @@
           "flows": [
             {
               "id": "out",
-              "node": 8,
+              "node": 4,
               "socket": "in"
             }
           ]
