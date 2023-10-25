@@ -226,7 +226,7 @@
           "parameters": [
             {
               "id": "targetValue",
-              "node": 4,
+              "node": 3,
               "socket": "result"
             }
           ]
