@@ -168,7 +168,7 @@
         {
           "id": 1,
           "type": "flow/delay",
-          "parameters": [
+          "values": [
             {
               "id": "duration",
               "value": 5
@@ -185,7 +185,7 @@
         {
           "id": 2,
           "type": "log",
-          "parameters": [
+          "values": [
             {
               "id": "message",
               "value": "Hello World!"
