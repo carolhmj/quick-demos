@@ -179,10 +179,12 @@
         {
           "id": 3,
           "type": "variable/get",
-          "configuration": {
-            "id": "variable",
-            "value": 0
-          }
+          "configuration": [
+            {
+              "id": "variable",
+              "value": 0
+            }
+          ]
         }
       ],
       "variables": [
