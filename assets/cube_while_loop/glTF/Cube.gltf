@@ -1,0 +1,336 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 36,
+      "max": [35],
+      "min": [0],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [1.0, 1.0, 1.000001],
+      "min": [-1.0, -1.0, -1.0],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [1.0, 1.0, 1.0],
+      "min": [-1.0, -1.0, -1.0],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [1.0, -0.0, -0.0, 1.0],
+      "min": [0.0, -0.0, -1.0, -1.0],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36,
+      "max": [1.0, 1.0],
+      "min": [-1.0, -1.0],
+      "type": "VEC2"
+    }
+  ],
+  "asset": {
+    "generator": "VKTS glTF 2.0 exporter",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 72,
+      "byteOffset": 0,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 432,
+      "byteOffset": 72,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 432,
+      "byteOffset": 504,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 576,
+      "byteOffset": 936,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 288,
+      "byteOffset": 1512,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1800,
+      "uri": "Cube.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "Cube_BaseColor.png"
+    },
+    {
+      "uri": "Cube_MetallicRoughness.png"
+    }
+  ],
+  "materials": [
+    {
+      "name": "Cube",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cube",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 2,
+            "POSITION": 1,
+            "TANGENT": 3,
+            "TEXCOORD_0": 4
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Cube"
+    }
+  ],
+  "samplers": [{}],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [0]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ],
+  "extensionsUsed": ["KHR_interactivity"],
+  "extensions": {
+    "KHR_interactivity": {
+      "nodes": [
+        {
+          "type": "math/random",
+          "values": [],
+          "configuration": [],
+          "flows": [],
+          "metadata": {
+            "positionX": "560.1142272949219",
+            "positionY": "335.1455383300781"
+          }
+        },
+        {
+          "type": "math/lt",
+          "values": [
+            {
+              "id": "b",
+              "value": 0.99,
+              "type": 2
+            },
+            {
+              "id": "a",
+              "node": 0,
+              "socket": "val"
+            }
+          ],
+          "configuration": [],
+          "flows": [],
+          "metadata": {
+            "positionX": "933.708984375",
+            "positionY": "253.6966552734375"
+          }
+        },
+        {
+          "type": "lifecycle/onStart",
+          "values": [],
+          "configuration": [],
+          "flows": [
+            {
+              "id": "out",
+              "node": 3,
+              "socket": "in"
+            }
+          ],
+          "metadata": {
+            "positionX": "471.46063232421875",
+            "positionY": "-152.34808349609375"
+          }
+        },
+        {
+          "type": "flow/whileLoop",
+          "values": [
+            {
+              "id": "condition",
+              "node": 1,
+              "socket": "val"
+            }
+          ],
+          "configuration": [
+            {
+              "id": "isDo",
+              "value": false
+            }
+          ],
+          "flows": [
+            {
+              "id": "loopBody",
+              "node": 7,
+              "socket": "in"
+            },
+            {
+              "id": "completed",
+              "node": 4,
+              "socket": "in"
+            }
+          ],
+          "metadata": {
+            "positionX": "1239.6684875488281",
+            "positionY": "36.449499511718756"
+          }
+        },
+        {
+          "type": "world/set",
+          "values": [
+            {
+              "id": "a",
+              "value": [5, 6, 7],
+              "type": 4
+            }
+          ],
+          "configuration": [
+            {
+              "id": "path",
+              "value": "nodes/0/translation"
+            }
+          ],
+          "flows": [],
+          "metadata": {
+            "positionX": "1798.1705923629859",
+            "positionY": "303.1538526143007"
+          }
+        },
+        {
+          "type": "world/get",
+          "values": [],
+          "configuration": [
+            {
+              "id": "path",
+              "value": "nodes/0/scale"
+            }
+          ],
+          "flows": [],
+          "metadata": {
+            "positionX": "56.85950927734393",
+            "positionY": "637.0478820800781"
+          }
+        },
+        {
+          "type": "math/mul",
+          "values": [
+            {
+              "id": "b",
+              "value": [1.01, 1.01, 1.01],
+              "type": 4
+            },
+            {
+              "id": "a",
+              "node": 5,
+              "socket": "value"
+            }
+          ],
+          "configuration": [],
+          "flows": [],
+          "metadata": {
+            "positionX": "647.7160034179688",
+            "positionY": "564.9638977050781"
+          }
+        },
+        {
+          "type": "world/set",
+          "values": [
+            {
+              "id": "a",
+              "node": 6,
+              "socket": "val"
+            }
+          ],
+          "configuration": [
+            {
+              "id": "path",
+              "value": "nodes/0/scale"
+            }
+          ],
+          "flows": [],
+          "metadata": {
+            "positionX": "1813.3783294677733",
+            "positionY": "-36.328094482421875"
+          }
+        }
+      ],
+      "variables": [],
+      "customEvents": [],
+      "types": [
+        {
+          "signature": "bool"
+        },
+        {
+          "signature": "int"
+        },
+        {
+          "signature": "float"
+        },
+        {
+          "signature": "float2"
+        },
+        {
+          "signature": "float3"
+        }
+      ]
+    }
+  }
+}
