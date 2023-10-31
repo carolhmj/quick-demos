@@ -188,11 +188,13 @@
           "values": [
             {
               "id": "a",
-              "value": 1
+              "value": [1, 2, 3, 4],
+              "type": 0
             },
             {
               "id": "b",
-              "value": 2
+              "value": [1, 2, 3, 4],
+              "type": 0
             }
           ]
         },
@@ -207,7 +209,8 @@
             }
           ]
         }
-      ]
+      ],
+      "types": [{ "signature": "float4" }]
     }
   }
 }
