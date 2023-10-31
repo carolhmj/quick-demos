@@ -183,12 +183,27 @@
           ]
         },
         {
+          "id": 3,
+          "type": "math/add",
+          "values": [
+            {
+              "id": "a",
+              "value": 1
+            },
+            {
+              "id": "b",
+              "value": 2
+            }
+          ]
+        },
+        {
           "id": 2,
           "type": "log",
           "values": [
             {
               "id": "message",
-              "value": "Hello World!"
+              "node": 3,
+              "socket": "val"
             }
           ]
         }
