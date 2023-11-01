@@ -263,14 +263,14 @@
           "type": "math/add",
           "values": [
             {
-              "id": "b",
-              "value": [0, 5, 0],
-              "type": 4
-            },
-            {
               "id": "a",
               "node": 4,
               "socket": "value"
+            },
+            {
+              "id": "b",
+              "value": [0, 5, 0],
+              "type": 4
             }
           ],
           "configuration": [],
@@ -281,14 +281,14 @@
           "type": "world/animateTo",
           "values": [
             {
-              "id": "nodeIndex",
-              "value": 0,
-              "type": 1
-            },
-            {
               "id": "a",
               "node": 5,
               "socket": "val"
+            },
+            {
+              "id": "nodeIndex",
+              "value": 0,
+              "type": 1
             }
           ],
           "configuration": [
