@@ -211,7 +211,7 @@
             },
             {
               "id": "easingDuration",
-              "value": 0.1
+              "value": 1
             }
           ],
           "flows": [
@@ -302,7 +302,7 @@
             },
             {
               "id": "easingDuration",
-              "value": 0.1
+              "value": 1
             }
           ],
           "flows": []
