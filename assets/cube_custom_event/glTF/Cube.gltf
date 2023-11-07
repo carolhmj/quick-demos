@@ -175,7 +175,8 @@
           "values": [
             {
               "id": "float3ToSend",
-              "value": [1.0, 2.0, 3.0]
+              "value": [1.0, 2.0, 3.0],
+              "type": 3
             }
           ]
         },
