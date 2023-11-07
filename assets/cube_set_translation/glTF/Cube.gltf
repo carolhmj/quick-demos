@@ -199,7 +199,8 @@
           ],
           "configuration": [
             {
-              "path": "/nodes/0/translation"
+              "id": "path",
+              "value": "/nodes/0/translation"
             }
           ]
         }
