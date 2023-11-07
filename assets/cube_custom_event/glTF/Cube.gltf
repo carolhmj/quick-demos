@@ -155,106 +155,59 @@
     "KHR_interactivity": {
       "nodes": [
         {
-          "id": 3,
-          "type": "customEvent/send",
-          "values": [
-            {
-              "id": "float3ToSend",
-              "type": 3,
-              "value": "[1,2,3]"
-            }
-          ],
-          "configuration": [
-            {
-              "id": "customEvent",
-              "value": "1"
-            }
-          ],
-          "flows": [],
-          "metadata": {
-            "positionX": "1617.59375",
-            "positionY": "540.609375"
-          }
-        },
-        {
-          "id": 2,
-          "type": "customEvent/send",
-          "values": [
-            {
-              "id": "number",
-              "value": 1,
-              "type": 1
-            }
-          ],
-          "configuration": [
-            {
-              "id": "customEvent",
-              "value": "0"
-            }
-          ],
-          "flows": [],
-          "metadata": {
-            "positionX": "1536.59375",
-            "positionY": "112.609375"
-          }
-        },
-        {
-          "id": 1,
-          "type": "flow/sequence",
-          "values": [],
-          "configuration": [
-            {
-              "id": "numberOutputFlows",
-              "value": "2"
-            }
-          ],
-          "flows": [
-            {
-              "id": "0",
-              "node": 2,
-              "socket": "in"
-            },
-            {
-              "id": "1",
-              "node": 3,
-              "socket": "in"
-            }
-          ],
-          "metadata": {
-            "positionX": "903.59375",
-            "positionY": "320.609375"
-          }
-        },
-        {
-          "id": 0,
           "type": "lifecycle/onStart",
-          "values": [],
-          "configuration": [],
           "flows": [
             {
               "id": "out",
               "node": 1,
               "socket": "in"
             }
+          ]
+        },
+        {
+          "type": "customEvent/send",
+          "configuration": [
+            {
+              "id": "customEvent",
+              "value": 0
+            }
           ],
-          "metadata": {
-            "positionX": "510.59375",
-            "positionY": "347.609375"
-          }
+          "values": [
+            {
+              "id": "float3ToSend",
+              "value": [1.0, 2.0, 3.0]
+            }
+          ]
+        },
+        {
+          "type": "customEvent/receive",
+          "configuration": [
+            {
+              "id": "customEvent",
+              "value": 0
+            }
+          ],
+          "flows": [
+            {
+              "id": "out",
+              "node": 3,
+              "socket": "in"
+            }
+          ]
+        },
+        {
+          "type": "log",
+          "values": [
+            {
+              "id": "message",
+              "node": 2,
+              "socket": "float3ToSend"
+            }
+          ]
         }
       ],
       "variables": [],
       "customEvents": [
-        {
-          "id": "log",
-          "values": [
-            {
-              "id": "number",
-              "type": 1,
-              "description": ""
-            }
-          ]
-        },
         {
           "id": "logTwo",
           "values": [
