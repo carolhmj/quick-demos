@@ -159,8 +159,32 @@
           "flows": [
             {
               "id": "out",
-              "node": 1,
+              "node": 3,
               "socket": "in"
+            }
+          ]
+        },
+        {
+          "type": "world/get",
+          "configuration": [
+            {
+              "id": "path",
+              "value": "/nodes/0/translation"
+            }
+          ]
+        },
+        {
+          "type": "math/add",
+          "values": [
+            {
+              "id": "a",
+              "node": 1,
+              "socket": "value"
+            },
+            {
+              "id": "b",
+              "value": [1, 2, 3],
+              "type": 0
             }
           ]
         },
@@ -169,14 +193,14 @@
           "values": [
             {
               "id": "a",
-              "value": [0.5, 0.0, 0.0, 1.0],
-              "type": 2
+              "node": 2,
+              "socket": "value"
             }
           ],
           "configuration": [
             {
               "id": "path",
-              "value": "/materials/0/pbrMetallicRoughness/baseColorFactor"
+              "value": "/nodes/0/translation"
             }
           ]
         }
@@ -187,9 +211,6 @@
         },
         {
           "signature": "float"
-        },
-        {
-          "signature": "float4"
         }
       ]
     }
