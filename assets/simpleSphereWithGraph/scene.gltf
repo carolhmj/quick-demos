@@ -1,0 +1,165 @@
+{
+  "asset": {
+    "generator": "Babylon.js v6.31.0",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "byteLength": 132768,
+      "uri": "scene.bin"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "sphere",
+      "translation": [0, 1, 0],
+      "mesh": 0,
+      "rotation": [0, 0, 1, 0],
+      "scale": [1, -1, 1]
+    },
+    {
+      "name": "camera1",
+      "translation": [0, 5, -10],
+      "camera": 0,
+      "rotation": [0, 0, 1, 0],
+      "scale": [1, -1, 1]
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "indices": 2,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [0, 1]
+    }
+  ],
+  "scene": 0,
+  "cameras": [
+    {
+      "type": "perspective",
+      "name": "camera1",
+      "perspective": {
+        "aspectRatio": 0.47346938775510206,
+        "yfov": 0.8,
+        "znear": 1,
+        "zfar": 10000
+      }
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 28980,
+      "name": "position - sphere",
+      "byteStride": 12,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 28980,
+      "byteOffset": 28980,
+      "name": "normal - sphere",
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteLength": 19320,
+      "byteOffset": 57960,
+      "name": "uv - sphere",
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteLength": 55488,
+      "byteOffset": 77280,
+      "name": "Indices - sphere"
+    }
+  ],
+  "accessors": [
+    {
+      "name": "position - sphere",
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 2415,
+      "type": "VEC3",
+      "min": [-1, -1, -1],
+      "max": [1, 1, 1],
+      "byteOffset": 0
+    },
+    {
+      "name": "normal - sphere",
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2415,
+      "type": "VEC3",
+      "byteOffset": 0
+    },
+    {
+      "name": "indices - sphere",
+      "bufferView": 3,
+      "componentType": 5125,
+      "count": 13872,
+      "type": "SCALAR",
+      "byteOffset": 0
+    }
+  ],
+  "materials": [
+    {
+      "name": "mat",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [1, 1, 0, 1],
+        "metallicFactor": 0,
+        "roughnessFactor": 0
+      }
+    }
+  ],
+  "extensionsUsed": ["KHR_interactivity"],
+  "extensions": {
+    "KHR_interactivity": {
+      "nodes": [
+        {
+          "type": "lifecycle/onStart",
+          "flows": [
+            {
+              "id": "out",
+              "node": 1,
+              "socket": "in"
+            }
+          ]
+        },
+        {
+          "type": "world/set",
+          "values": [
+            {
+              "id": "a",
+              "value": 0.6,
+              "type": 0
+            }
+          ],
+          "configuration": [
+            {
+              "id": "path",
+              "value": "/cameras/0/perspective/aspectRatio"
+            }
+          ]
+        }
+      ],
+      "types": [
+        {
+          "signature": "float"
+        }
+      ]
+    }
+  }
+}
