@@ -150,7 +150,7 @@
           "configuration": [
             {
               "id": "path",
-              "value": "/cameras/0/perspective/aspectRatio"
+              "value": "/cameras/0/perspective/yfov"
             }
           ]
         }
